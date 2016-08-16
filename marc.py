@@ -2,6 +2,10 @@
 import gpxpy
 import gpxpy.gpx
 
+def dispPoint( pPoint ) :
+  print "Point at ({0},{1}) -> {2}".format( pPoint.latitude, pPoint.longitude, pPoint.elevation )
+  print "-- timestamp:%s:" % pPoint.time
+
 def dispTracks() :
   liTrack = 0
   for lTrack in gXmlGPX.tracks:
@@ -14,8 +18,7 @@ def dispTracks() :
       print "--"
       print "segment #%d, track #%d" % ( liSegment, liTrack )
       for lPoint in lSegment.points:
-        print "Point at ({0},{1}) -> {2}".format( lPoint.latitude, lPoint.longitude, lPoint.elevation )
-        print "-- timestamp:%s:" % lPoint.time
+        dispPoint( lPoint )
       print "end of segment #%d, lTrack #%d" % ( liSegment, liTrack )
       print "----"
     print "end of track #%d" % ( liTrack )
@@ -40,8 +43,7 @@ def dispRoutes() :
     print "============="
     print "Route: #%d" % ( liRoute )
     for lPoint in lRoute.points:
-      print "Point at ({0},{1}) -> {2}".format( lPoint.latitude, lPoint.longitude, lPoint.elevation )
-      print "-- timestamp:%s:" % lPoint.time
+      dispPoint( lPoint )
 
 
 # Parsing an existing file:
